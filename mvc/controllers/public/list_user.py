@@ -3,10 +3,9 @@ import app
 import pyrebase
 import firebase_config as token
 import json  
-
+        
 render = web.template.render("mvc/view/public", base="layout")
-
-class Index:
-
+           
+class List_user:
     def GET(self):
-        return render.index()
+        return render.list_user()   
