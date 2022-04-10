@@ -6,6 +6,6 @@ import json
         
 render = web.template.render("mvc/view/public", base="layout")
            
-class List_user:
+class Principal:
     def GET(self):
-        return render.list_user()  
+        return render.principal()  
