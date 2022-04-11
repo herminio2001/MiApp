@@ -41,3 +41,4 @@ class Registrar:
             print("Error Login.POST: {}".format(message))
             #if message == "EMAIL_NOT_FOUND":
             return render.correo_existe()
+    
