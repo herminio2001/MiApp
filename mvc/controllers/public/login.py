@@ -3,7 +3,11 @@ import app
 import pyrebase
 import firebase_config as token
 import json  
-        
+
+firebase = pyrebase.initialize_app(token.firebaseConfig)
+auth = firebase.auth()
+db = firebase.database()
+
 render = web.template.render("mvc/view/public", base="layout")
            
 class Login:
@@ -38,7 +42,7 @@ class Login:
 
             #message = "Bienvenido"
             #return render.login(message)
-            return render.bienvenida()
+            return render.principal()
         except Exception as error:
             formato = json.loads(error.args[1]) # Error en formato JSON
             error = formato['error'] # Se obtiene el json de error
@@ -52,4 +56,4 @@ class Login:
                 #message1 = "contraseña incorrecta"
             #return render.login(message1)
             #print(error['message'])
-            #return render.login()   
+            #return render.login()
