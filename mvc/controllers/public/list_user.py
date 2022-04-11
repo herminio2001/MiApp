@@ -8,4 +8,4 @@ render = web.template.render("mvc/view/public", base="layout")
            
 class List_user:
     def GET(self):
-        return render.list_user()  
+        return render.list_user() 
