@@ -6,24 +6,16 @@ import json
 
 firebase = pyrebase.initialize_app(token.firebaseConfig)
 auth = firebase.auth()
-db = firebase.database()
-
+db = firebase.database()     
 render = web.template.render("mvc/view/public", base="layout")
            
 class Login_ope:
     def GET(self):
-        return render.login_ope()
-        try:
-            return render.login_ope()
-        except Exception as error:
-            print("Error Login.GET: {}".format(error.args[0]))
-    def POST(self):  
+        return render.login_ope()   
+    def POST(self):
         formulario = web.input()
         email = formulario.email
-        password = formulario.password
-        #user = auth.sign_in_with_email_and_password(email, password)
-        #print(user['localId'])
-        #return render.login()              
+        password = formulario.password          
         try:
             formulario = web.input()
             email = formulario.email
@@ -31,18 +23,10 @@ class Login_ope:
             user = auth.sign_in_with_email_and_password(email, password)
             print(user['localId'])
 
-            #informacion = auth.get_account_info(user['idToken'])
-            #usuarios = informacion['users']
-            #usuario = usuarios[0]
-            #localid = usuario['localId']
-            #web.setcookie('localid', localId)
-
             web.setcookie('localID', user['localId']) # se almacena en una cookie el localID
             print("localId : ",web.cookies().get('localID'))
 
-            #message = "Bienvenido"
-            #return render.login(message)
-            return render.principal()
+            return render.principal_ope()
         except Exception as error:
             formato = json.loads(error.args[1]) # Error en formato JSON
             error = formato['error'] # Se obtiene el json de error
@@ -53,7 +37,3 @@ class Login_ope:
                 #message1 = "Correo incorrecto"
             else:
                 return render.error_cont()
-                #message1 = "contraseña incorrecta"
-            #return render.login(message1)
-            #print(error['message'])
-            #return render.login()
