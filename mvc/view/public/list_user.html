@@ -39,7 +39,7 @@ $def with (datos_user)
                 <th>Email</th>
                 <th>Telefono</th>
                 <th>nivel</th>
-                
+
                 <th style="text-align: center;"> Actualizar</th>
             </thead>
             $for campos_user in datos_user:
@@ -50,7 +50,7 @@ $def with (datos_user)
               <td>$campos_user.val().get('telefono')</td>
               <td>$campos_user.val().get('nivel')</td>
               <td>$campos_user.val().get('estado')</td>
-              <td style="text-align: left;"><a href="/update"> Actualizar </a></td>
+              <td style="text-align: left;"><a href="/update?id=$campos_user.key()"> Actualizar </a></td>
             </tr>  
 
 
