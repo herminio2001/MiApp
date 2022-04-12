@@ -19,6 +19,8 @@ class Registrar:
             nombre = formulario.nombre
             telefono = formulario.telefono
             email = formulario.email
+            nivel = formulario.nivel
+            estado = formulario.estado
             password = formulario.password
             print(email,password)
             #print(localID)
@@ -28,7 +30,9 @@ class Registrar:
             data = {
                 "nombre": nombre,
                 "telefono": telefono,
-                "email": email
+                "email": email,
+                "nivel":nivel, 
+                "estado":estado
             }
             results = db.child("users").child(user['localId']).set(data)
 

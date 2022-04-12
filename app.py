@@ -10,8 +10,9 @@ urls = (
     '/update', 'mvc.controllers.public.update.Update',
     '/login_ope', 'mvc.controllers.public.login_ope.Login_ope',
     '/principal_ope', 'mvc.controllers.public.principal_ope.Principal_ope',
-    '/recuperar_con', 'mvc.controllers.public.recuperar_con.Recuperar_con',
     '/list_user_ope', 'mvc.controllers.public.list_user_ope.List_user_ope',
+    '/recuperar_con', 'mvc.controllers.public.recuperar_con.Recuperar_con',
+    '/dash_ope', 'mvc.controllers.public.dash_ope.Dash_ope',
 )       
  
 app = web.application(urls, globals())  
