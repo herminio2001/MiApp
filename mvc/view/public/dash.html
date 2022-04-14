@@ -6,17 +6,22 @@
         <title>Login hola mundo</title>  
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <div class="container-fluid">
-              <a class="navbar-brand" href="/principal" style="margin-left:15%;">Herminio Martinez Dionisio</a>
+              <a class="navbar-brand" href="/principal" style="margin-left:15%;">Menu</a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
 
-              <a class="navbar-brand" href="/list_user" style="margin-left:35%;">Lista de usuarios</a>
+              <a class="navbar-brand" href="/list_user" style="margin-left:40px;">Lista de usuarios</a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
 
               <a class="navbar-brand" href="/dash" style="margin-right:8%;" >Dashboard</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+
+              <a class="navbar-brand" href="/login" style="margin-right:8%;" >Salir</a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -38,8 +43,8 @@
     <th style="margin-right: 50px;">Sensor 1</th>
     <th style="margin-left: 50px;">Sensor 2</th>
     <tr>
-        <td id="aaa">{{sensor1}}</td>
-        <td id="bbb">{{sensor2}}</td>
+        <td id="temperatura">{{sensor1}}</td>
+        <td id="humedad">{{sensor1}}</td>
     </tr>
 
 </table>
@@ -49,11 +54,11 @@
 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRipqdiDkY4uYMd_HxV-QHwHE2rmoC51NGhzGPVmfINREeA53uc9fcofhLRckMCznuDMjc&usqp=CAU">
 <img width="150px" height="150px" src="https://cdn-icons-png.flaticon.com/512/728/728093.png" >
 <table style="margin-left: 120px;">
-    <th style="margin-right: 50px;">Sensor 1</th>
-    <th style="margin-left: 50px;">Sensor 2</th>
+    <th style="margin-right: 50px;">Temperatura</th>
+    <th style="margin-left: 50px;">Humedad</th>
     <tr>
-        <td style="margin-right: 50px;" id="ccc">{{sensor1}}</td>
-        <td style="margin-left: 50px;" id="ddd">{{sensor2}}</td>
+        <td style="margin-right: 50px;" id="temperatura1">{{sensor2}}</td>
+        <td style="margin-left: 50px;" id="humedad1">{{sensor2}}</td>
     </tr>
 
 </table>
@@ -61,15 +66,15 @@
 <script>
     window.setInterval(function (){
         var request = new XMLHttpRequest();
-        request.open('GET', 'https://awi4-7926c-default-rtdb.firebaseio.com/sensores.json');
+        request.open('GET', 'https://webapp-c89a6-default-rtdb.firebaseio.com/sucursales.json');
         request.onload = () =>{
             const response = request.responseText;
             console.log(response);
             const json = JSON.parse(response);
-            document.getElementById('aaa').innerHTML = json["aaaa"].temperatura;
-            document.getElementById('bbb').innerHTML = json["bbbb"].temperatura;
-            document.getElementById('ccc').innerHTML = json["aaaa"].temperatura;
-            document.getElementById('ddd').innerHTML = json["bbbb"].temperatura;
+            document.getElementById('temperatura').innerHTML = json["sensor1"].temperatura;
+            document.getElementById('humedad').innerHTML = json["sensor1"].humedad;
+            document.getElementById('temperatura1').innerHTML = json["sensor2"].temperatura;
+            document.getElementById('humedad1').innerHTML = json["sensor2"].humedad;
 
         };
         request.send();
